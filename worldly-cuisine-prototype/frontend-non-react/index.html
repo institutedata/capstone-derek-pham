@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BiteMap</title>
+    <script type="module" src="./js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" >      
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css" rel="stylesheet">  
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 class="title">BiteMap</h1>
+        <h3 class="explore"><a href="./explore.html">Explore</a></h3>
+        <h3 class="home"><a href="#">Home</a></h3>
+      </nav>
+    </header>
+    <div class="content">
+      <div class="container">
+        <div class="foodFormContainer">
+          <form id="foodForm">
+            <input type="text" id="foodInput">
+            <button id="mainButton" type="submit">Find Origin</button>            
+            <button id="altButton" type="submit">🔍</button>
+          </form>
+          <div class="resultContainer" id="resultContainer">
+            <p id="result"><span id="flagIcon" class="flag-icon flag-icon"></span></p>
+            <img id="foodThumbnail" src="//upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/150px-Sushi_platter.jpg" alt="Image">
+            <p id="foodDescription"></p><a id="articleURL" href="#" target="_blank">Read more</a>
+          </div>
+          <button id="addFoodButton">Add to list</button>
+        </div>
+        <div id="map"></div>
+      </div>
+      <div class="foodExperienceContainer">
+        <h1>List</h1>
+        <div id="foodListContainer">
+          <ul id="foodList">
+          </ul>
+        </div>
+      </div>
+      <div id="foodExperiencePercentage">
+        <p id="foodExperienceStat"></p>
+      </div>
+      <canvas id="myBarChart"></canvas>
+    </div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
+    <script type="module" src="./js/mapBox.js"></script>
+  </body>
+</html>

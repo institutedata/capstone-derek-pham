@@ -1,0 +1,16 @@
+/* StepProgressBar.module.css */
+.progressBar {
+    grid-column: span 2;
+    background-color: #a17979;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 200px;
+}
+
+#myRange {
+    width: 500px;
+}
+
+.konvajs-content {
+    width: 0px;
+}

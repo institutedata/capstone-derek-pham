@@ -1,0 +1,120 @@
+<!-- TO DO
+- implement list item removal ✓
+- country count ✓
+- implement country percentage ✓
+
+- implement another page ✓ -- page is still quite empty
+  - map should go on another page or something of similar effect
+  - random dish of the day or something
+  - reverse search where you search country and get food
+
+- improve ui design
+  - add animations ✓ -- only simple hover animations implemented
+
+- when the result is shown, the location should be pointed on the map ✓
+
+- result should display an image of the food ✓ and the flag of the country **
+- test to see if variables on the list STAY and do not disappear **
+- 
+
+/-- 04/02/2024 
+    -added image return functionality 
+--/
+
+/-- 05/02/2024 
+    -added description and article link to search result
+    -added some responsiveness to foodform and resultcontainer for small screens
+--/
+
+/-- 06/02/2024 
+    -added some responsiveness for larger screens
+    -modified colors
+--/
+
+/-- 09/02/2024 
+    -implemented flag output
+    -added bar chart with chart.js
+    -capitalisation
+    -reworked backend and data handling
+    -
+--/
+----------------------------------------------------
+/-- 27/02/2024 
+    -finished rerouting getfoodorigin as well as rewriting frontend rendering for it
+    -successfully connected routes fooditemretrieval for initial rendering
+    -modified data and migrated storage to a modeljs
+--/
+
+/-- 28/02/2024 
+    -can manipulate data/list with the add and remove buttons
+        ~need to prevent duplicates
+    -migrated code for foodExperience functionality to appropriate locations
+--/
+
+/-- 29/02/2024 
+    -wrote basic connection to mongodb atlas database
+--/
+
+/-- 1/03/2024 
+    -can push and pull data from online database
+    -added second collection to hold foodrecords
+    -swapped out google maps for mapbox instead
+--/
+
+/-- 6/03/2024 
+    -finished re-implementing map data interactions using mapbox
+    -map can now track amount of countries
+--/
+
+NEXT:
+-FINISH LIST FUNCTIONS ✓
+-update barcharts ✓       
+ ~need to prevent duplicates ✓
+-refine usage of data model ✓
+-use a database ✓
+-change map ✓
+-implement multi-region data to algorithm
+ ~{mult-region: Boolean} OR {origins: [name1, name2]}
+-include "region or state" in algorithm ✓
+-api and thus different map data ✓
+-rework the pathing to geojson
+
+
+ [
+    REGEX TESTING CASES:
+    - BOTH  place of origin and 'region or state' can sometimes be present e.g https://en.wikipedia.org/wiki/Gazpacho
+    - multiple countries can be found after place of origin and 'region or state e.g. https://en.wikipedia.org/wiki/Fairy_bread , https://en.wikipedia.org/wiki/Hamburger
+    - origins may not be country specific and be a larger inclusive region e.g. https://en.wikipedia.org/wiki/Biryani https://en.wikipedia.org/wiki/Shawarma
+    - origins may not be country specific and be oldly named instead i.e. an old country that doesnt exist e.g. https://en.wikipedia.org/wiki/Couscous
+    - multi-origin foods:
+        https://en.wikipedia.org/wiki/Chili_con_carne
+        https://en.wikipedia.org/wiki/Hamburger
+        https://en.wikipedia.org/wiki/Fajita
+    - https://en.wikipedia.org/wiki/Savory_spinach_pie does not return first listed origin due to alphabitcal order properties
+    - Scotland does not have an independent code because it is not a sovereign state; it is part of the United Kingdom. Therefore, it uses the United Kingdom's country code, GB.
+    - algorithm ends when failing: https://en.wikipedia.org/wiki/Pierogi , https://en.wikipedia.org/wiki/Doner_kebab
+    - https://en.wikipedia.org/wiki/Bulgogi returns korea instead of NORTH korea
+    - need to accomodate special characters e.gg Bánh mì
+    - place of origin might instead be a description https://en.wikipedia.org/wiki/Ceviche
+    - place of origin references continent and not country https://en.wikipedia.org/wiki/Jollof_rice
+ ]
+
+- improve the regex matching on foods that DONT have a place of origin
+- find a solution for suncake (Taiwan)
+
+-main goal is to have two complete pages...
+- implement responsivity
+- implement an intro animation
+
+~PENDING IMPROVMENTS~
+- explore redirecting
+- limit bar graph (top 5)
+- explore mapbox
+- add incentive for users e.g a score/goal
+- improve ui design
+- taste profile
+-->
+
+PLAN FOR 5/03/24: 
+- ADD DYNAMIC INTERACTION TO mapbox
+- RE-implement LOCATION DATA TO MAPBOX

@@ -1,0 +1,54 @@
+@media screen and (min-width: 1200px) {
+    body {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #foodForm {
+        height: 10px;
+        margin-top: 20px;
+        display: flex;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #foodForm input {
+        width: 180px;
+        font-size: 20px;
+    }
+
+    #mainButton {
+        display: none;
+    }
+    
+    #altButton {
+        display: block;
+        width: 50px;
+    }
+
+    .resultContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    #result {
+        margin-bottom: 0px;
+        grid-column: span 2;
+    }
+        
+    #foodThumbnail {
+        grid-column: span 2;
+        width: 120px;
+    }
+
+    #foodDescription {
+        align-items: center;
+    }
+
+    #foodExperienceStat {
+        text-align: center;
+        font-size: 17px;
+    }
+
+}
+

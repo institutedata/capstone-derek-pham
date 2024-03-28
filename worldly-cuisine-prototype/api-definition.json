@@ -1,0 +1,272 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Food Origin API",
+    "description": "An API to find out the origin of different food items",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "definitions": {
+    "FoodItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "thumbnailURL": {
+          "type": "string",
+          "format": "uri"
+        },
+        "foodDescription": {
+          "type": "string"
+        },
+        "articleURL": {
+          "type": "string",
+          "format": "uri"
+        },
+        "isoCode": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "name", "origin"]
+    }
+  },
+  "paths": {
+    "/getFoodOrigin/{food}": {
+      "get": {
+        "summary": "Find Food Origin",
+        "description": "Returns a data object of specified food name or generates and stores a new one using external APIs.",
+        "parameters": [
+          {
+            "name": "food",
+            "in": "path",
+            "required": true,
+            "description": "Name of the food item",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "origin": {
+                  "type": "string"
+                },
+                "thumbnailURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "foodDescription": {
+                  "type": "string"
+                },
+                "articleURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "isoCode": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "origin",
+                "thumbnailURL",
+                "foodDescription",
+                "articleURL",
+                "isoCode"
+              ]
+            }
+          },
+          "404": {
+            "description": "Food item not found"
+          }
+        }
+      }
+    },
+    "/getFoodItems": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns array of food data currently stored in client-side list",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "origin": {
+                    "type": "string"
+                  },
+                  "thumbnailURL": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "foodDescription": {
+                    "type": "string"
+                  },
+                  "articleURL": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "isoCode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "origin",
+                  "thumbnailURL",
+                  "foodDescription",
+                  "articleURL",
+                  "isoCode"
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Food list is empty"
+          }
+        }
+      }
+    },
+    "/addFoodItem": {
+      "post": {
+        "summary": "Add a new food item",
+        "description": "Creates a new food item with the data provided in the request body.",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Food item data to be added",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "origin": {
+                  "type": "string"
+                },
+                "thumbnailURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "foodDescription": {
+                  "type": "string"
+                },
+                "articleURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "isoCode": {
+                  "type": "string"
+                }
+              },
+              "required": ["name", "origin"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item added",
+            "schema": {
+              "$ref": "#/definitions/FoodItem"
+            }
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          }
+        }
+      }
+    },
+    "/removeFoodItem/{name}": {
+      "delete": {
+        "summary": "Remove a food item",
+        "description": "Deletes the specified food item from the database.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "description": "The name of the food item to delete",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item removed"
+          },
+          "404": {
+            "description": "Food item not found"
+          }
+        }
+      }
+    },
+    "/getFoodExperience": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns number of unique countries and a percentage that reflects world coverage",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "numerator": {
+                  "type": "number"
+                },
+                "percentage": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Food list is empty"
+          }
+        }
+      }
+    },
+    "/newBarChartData": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns counts of each country present on the list",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+              }
+            }
+          },
+          "404": {
+            "description": "Food list is empty"
+          }
+        }
+      }
+    }
+  }
+}
