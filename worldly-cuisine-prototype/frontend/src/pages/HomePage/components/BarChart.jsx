@@ -10,7 +10,7 @@ const BarChart = () => {
     labels: [],
     datasets: [
       {
-        label: 'Number of items sold',
+        label: 'Dishes named',
         data: [],
         backgroundColor: [],
         borderColor: [],
@@ -22,6 +22,9 @@ const BarChart = () => {
     scales: {
       y: {
         beginAtZero: true,
+        ticks: {
+          stepSize: 1 
+        },
       },
     },
   };
@@ -31,8 +34,13 @@ const BarChart = () => {
       try {
         const response = await fetch('http://localhost:5000/api/newBarChartData');
         const newData = await response.json();
+        const entries = Object.entries(newData);
 
-        // Define a set of colors for the bars
+
+        entries.sort((a, b) => b[1] - a[1]);
+        const topEntries = entries.slice(0, 10);
+        const sortedObject = Object.fromEntries(topEntries);        
+
         const barColors = [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
@@ -42,15 +50,15 @@ const BarChart = () => {
           'rgb(255, 159, 64)'
         ];
 
-        const backgroundColors = Object.values(newData).map((_, index) => barColors[index % barColors.length]);
+        const backgroundColors = Object.values(sortedObject).map((_, index) => barColors[index % barColors.length]);
         const borderColors = backgroundColors.map(color => color.replace('rgb', 'rgba').replace(')', ', 0.2)'));
 
         setChartData({
-          labels: Object.keys(newData),
+          labels: Object.keys(sortedObject),
           datasets: [
             {
-              label: 'Number of items sold',
-              data: Object.values(newData),
+              label: 'Dishes named',
+              data: Object.values(sortedObject),
               backgroundColor: backgroundColors,
               borderColor: borderColors,
             },

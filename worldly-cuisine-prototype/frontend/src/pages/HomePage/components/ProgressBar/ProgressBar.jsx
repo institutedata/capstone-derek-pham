@@ -1,49 +1,52 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { FoodDataContext } from '../FoodDataContext';
 import { Stage, Layer, Rect, Circle } from 'react-konva';
 import Konva from 'konva';
 import './ProgressBar.css';
 
-// Your component code...
-
-
 function ProgressBar() {
+  const { foodItems } = useContext(FoodDataContext);
+
   const [rectWidth, setRectWidth] = useState(50);
   const [collisions, setCollisions] = useState([false, false, false, false, false]);
   const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
   const containerRef = useRef();
 
-
   const rectX = 0;
-  const rectY = 60;
-  const rectHeight = 25;
+  const rectHeight = 10;
+  const rectY = 50 - rectHeight / 2;
 
   const circles = [
-    { x: (dimensions.width / 6 * 1), y: 75, radius: 25 },
-    { x: (dimensions.width / 6 * 2), y: 75, radius: 25 },
-    { x: (dimensions.width / 6 * 3), y: 75, radius: 25 },
-    { x: (dimensions.width / 6 * 4), y: 75, radius: 25 },
-    { x: (dimensions.width / 6 * 5), y: 75, radius: 25 }
+    { x: (dimensions.width / 6 * 1), y: 50, radius: 18 },
+    { x: (dimensions.width / 6 * 2), y: 50, radius: 18 },
+    { x: (dimensions.width / 6 * 3), y: 50, radius: 18 },
+    { x: (dimensions.width / 6 * 4), y: 50, radius: 18 },
+    { x: (dimensions.width / 6 * 5), y: 50, radius: 18 }
   ];
 
-  const maxWidth = dimensions.width;
+  const maxWidth = dimensions.width / 6 * 5;
 
   useEffect(() => {
     const checkCollision = (rectWidth) => {
-      const rectRightEdge = rectX + rectWidth;
+      const scaledWidth = rectWidth / 50 * maxWidth;
+      const rectRightEdge = rectX + scaledWidth;
       const rectLeftEdge = rectX;
       const rectTopEdge = rectY;
       const rectBottomEdge = rectY + rectHeight;
 
-      setCollisions(circles.map(circle => 
-        rectRightEdge >= circle.x - circle.radius &&
-        rectLeftEdge <= circle.x + circle.radius &&
-        rectBottomEdge >= circle.y - circle.radius &&
-        rectTopEdge <= circle.y + circle.radius
-      ));
+      setCollisions(circles.map((circle, index) => {
+        const isColliding = rectRightEdge >= circle.x - circle.radius &&
+          rectLeftEdge <= circle.x + circle.radius &&
+          rectBottomEdge >= circle.y - circle.radius &&
+          rectTopEdge <= circle.y + circle.radius;
+        const shouldPulse = foodItems.length >= 10 && rectWidth >= (index + 1) * 10;
+
+        return isColliding && shouldPulse;
+      }));
     };
 
     checkCollision(rectWidth);
-  }, [rectWidth]);
+  }, [rectWidth, maxWidth, foodItems.length]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,21 +64,31 @@ function ProgressBar() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [])
+
+  useEffect(() => {
+    setRectWidth(foodItems.length)
+  }, [foodItems])
 
   return (
     <div ref={containerRef} className='progressBar'>
-      <button onClick={() => setRectWidth(prevWidth => Math.max(prevWidth - 10, 0))}>-</button>
-      <input id='myRange' type="range" min="0" max={maxWidth} value={rectWidth} onChange={e => setRectWidth(Number(e.target.value))} />
-      <button onClick={() => setRectWidth(prevWidth => Math.min(prevWidth + 10, maxWidth))}>+</button>
-      <Stage width={dimensions.width} height={dimensions.height} id='progressBarStage'>
+      {//<input id='myRange' type="range" min="0" max='50' value={rectWidth} onChange={e => setRectWidth(Number(e.target.value))} />
+      }
+      <Stage width={dimensions.width} height={100} id='progressBarStage'>
         <Layer id='progressBarLayer'>
+          <Rect
+            x={0}
+            y={0}
+            width={dimensions.width}
+            height={100}
+            fill="#65929E" // Your chosen background color
+          />
           <Rect
             x={rectX}
             y={rectY}
-            width={rectWidth}
+            width={rectWidth / 50 * maxWidth}
             height={rectHeight}
-            fill="green"
+            fill="#FFBF00"
           />
           {circles.map((circle, index) => (
             <AnimatedCircle
@@ -97,18 +110,28 @@ const AnimatedCircle = ({ x, y, radius, isColliding }) => {
   const [color, setColor] = useState('blue');
 
   useEffect(() => {
-    setColor(isColliding ? 'red' : 'blue');
+    const node = circleRef.current;
     if (isColliding) {
-      // Implement scale animation or similar effect here
-      const node = circleRef.current;
-      const anim = new Konva.Animation(frame => {
-        const scale = Math.sin(frame.time * 0.002) + 1;
-        node.scaleX(scale);
-        node.scaleY(scale);
-      }, node.getLayer());
-      anim.start();
-
-      return () => anim.stop();
+      setColor('#FFBF00');
+      const tween = new Konva.Tween({
+        node: node,
+        scaleX: 1.5,
+        scaleY: 1.5,
+        duration: 0.25,
+        easing: Konva.Easings.EaseOut,
+        onFinish: () => {
+          new Konva.Tween({
+            node: node,
+            scaleX: 1,
+            scaleY: 1,
+            duration: 0.25,
+            easing: Konva.Easings.EaseOut
+          }).play();
+        }
+      });
+      tween.play();
+    } else {
+      setColor('#2471A3');
     }
   }, [isColliding]);
 
@@ -122,5 +145,6 @@ const AnimatedCircle = ({ x, y, radius, isColliding }) => {
     />
   );
 };
+
 
 export default ProgressBar;

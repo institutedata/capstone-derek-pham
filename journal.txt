@@ -66,55 +66,74 @@
     -map can now track amount of countries
 --/
 
+/-- 28/03/2024
+    - added re-centering to the find origin buttons
+    - progressBar length now will reflect changes to the fooditems list
+    - add responsivity to progressBar
+--/
+
+/-- 1/04/2024
+    - implement grid view for list 
+    - add sorting to the bar chart and render top 10 countries
+    - updated title and favicon
+    - added filter for underscores to search algorithm
+--/
+
+/-- 03/04/2024
+    - added redirecting for foodInput in FoodForm
+    - added error handling to prevent rendering result upon failing to fetch data in foodform
+    - added loading circle when fetching food data
+    - fixed issue where substrings are unintentionally returned i.e returning Cambodia from Cambodian
+    - added multiple phrase matches for multiple extracted segments
+--/
+
 NEXT:
--FINISH LIST FUNCTIONS ✓
--update barcharts ✓       
- ~need to prevent duplicates ✓
--refine usage of data model ✓
--use a database ✓
--change map ✓
--implement multi-region data to algorithm
- ~{mult-region: Boolean} OR {origins: [name1, name2]}
--include "region or state" in algorithm ✓
--api and thus different map data ✓
--rework the pathing to geojson
+- TODO: build database using AI
+- TODO: fix codes for converting certain countries to the UK 
+- TODO: add alert if item is already in list
+- TODO: add score tracker
+- TODO: figure out what to write for documentation
+    ~ TODO: build infrastructure for speed quiz
+- TODO: implement user-specific data
+    ~ this can make demos easier with prefilled data
 
+PENDING:
+- find solution to found regex testing cases
+- explore redirecting in regex algorithm
+- improve ui design
 
- [
+[
     REGEX TESTING CASES:
     - BOTH  place of origin and 'region or state' can sometimes be present e.g https://en.wikipedia.org/wiki/Gazpacho
     - multiple countries can be found after place of origin and 'region or state e.g. https://en.wikipedia.org/wiki/Fairy_bread , https://en.wikipedia.org/wiki/Hamburger
     - origins may not be country specific and be a larger inclusive region e.g. https://en.wikipedia.org/wiki/Biryani https://en.wikipedia.org/wiki/Shawarma
-    - origins may not be country specific and be oldly named instead i.e. an old country that doesnt exist e.g. https://en.wikipedia.org/wiki/Couscous
+    - origins may not be country specific and be oddly named instead i.e. an old country that doesn't exist e.g. https://en.wikipedia.org/wiki/Couscous
     - multi-origin foods:
         https://en.wikipedia.org/wiki/Chili_con_carne
         https://en.wikipedia.org/wiki/Hamburger
         https://en.wikipedia.org/wiki/Fajita
-    - https://en.wikipedia.org/wiki/Savory_spinach_pie does not return first listed origin due to alphabitcal order properties
-    - Scotland does not have an independent code because it is not a sovereign state; it is part of the United Kingdom. Therefore, it uses the United Kingdom's country code, GB.
+    - https://en.wikipedia.org/wiki/Savory_spinach_pie does not return first listed origin due to alphabetical order properties
+    - Scotland does not have an independent code because it is not a sovereign state; it is part of the United Kingdom. Therefore, it uses the United Kingdom's country code, GB. + England https://en.wikipedia.org/wiki/Apple_pie
     - algorithm ends when failing: https://en.wikipedia.org/wiki/Pierogi , https://en.wikipedia.org/wiki/Doner_kebab
     - https://en.wikipedia.org/wiki/Bulgogi returns korea instead of NORTH korea
     - need to accomodate special characters e.gg Bánh mì
     - place of origin might instead be a description https://en.wikipedia.org/wiki/Ceviche
-    - place of origin references continent and not country https://en.wikipedia.org/wiki/Jollof_rice
- ]
+    - place of origin references continent and not country https://en.wikipedia.org/wiki/Jollof_rice , https://en.wikipedia.org/wiki/Flan_(pie)
+    - certain food titles might return information on something else with the same e.g. ratatouille returns information on ratatouille the MOVIE: https://api.wikimedia.org/core/v1/wikipedia/en/search/page?q=Ratatouille&limit=5
+    - new phrase found: 'Associated Cuisine' https://en.wikipedia.org/wiki/Pavlova_(dessert) , https://en.wikipedia.org/wiki/Ikan_bakar
+    - need to include Britain as UK: https://en.wikipedia.org/wiki/Shepherd%27s_pie
+    - alphabetical bias: https://en.wikipedia.org/wiki/Cannoli , https://en.wikipedia.org/wiki/Green_papaya_salad , https://en.wikipedia.org/wiki/Cr%C3%A8me_br%C3%BBl%C3%A9e
+    - countries may be abbreviated i.e US instead of United States: https://en.wikipedia.org/wiki/Vichyssoise
+]
 
-- improve the regex matching on foods that DONT have a place of origin
+- improve the regex matching on foods that DON/T have a place of origin
 - find a solution for suncake (Taiwan)
 
--main goal is to have two complete pages...
-- implement responsivity
-- implement an intro animation
 
-~PENDING IMPROVMENTS~
-- explore redirecting
-- limit bar graph (top 5)
-- explore mapbox
-- add incentive for users e.g a score/goal
-- improve ui design
+~FUTURE FEATURES IN CONSIDERATION~
 - taste profile
--->
+- implement multi-region data to algorithm
 
-PLAN FOR 5/03/24: 
-- ADD DYNAMIC INTERACTION TO mapbox
-- RE-implement LOCATION DATA TO MAPBOX
+
+~KNOWN ISSUES~
+-->

@@ -6,7 +6,7 @@ import { FoodDataContext } from './FoodDataContext';
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
 const MapBox = () => {
-  const { lng, lat, foodItems } = useContext(FoodDataContext);
+  const { lng, lat, foodItems, recenterTrigger } = useContext(FoodDataContext);
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
@@ -53,7 +53,7 @@ const MapBox = () => {
         source: "countries",
         paint: {
           "fill-color": "#888888",
-          "fill-opacity": 0.5,
+          "fill-opacity": 0.7,
         },
       });
       
@@ -71,12 +71,12 @@ const MapBox = () => {
         essential: true,
       });
     }
-  }, [lng, lat]);
+  }, [lng, lat, recenterTrigger]);
 
   useEffect(() => {
     if (isMapLoaded && mapRef.current) {
       console.log('Map coloring in effect');
-      setPaint(mapRef.current, "#FF2828");
+      setPaint(mapRef.current, "#00FF00");
     }
   }, [foodItems, isMapLoaded]);
 

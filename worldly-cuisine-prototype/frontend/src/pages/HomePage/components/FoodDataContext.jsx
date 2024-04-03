@@ -9,6 +9,8 @@ export const DataProvider = ({ children }) => {
     const [percentage, setPercentage] = useState(undefined)
     const [lng, setLng] = useState(133.7);
     const [lat, setLat] = useState(-29.27);
+    const [recenterTrigger, setRecenterTrigger] = useState(0);
+
 
     useEffect(() => {
         const loadInitialData = async () => {
@@ -57,6 +59,8 @@ export const DataProvider = ({ children }) => {
         lat,
         setLng,
         setLat,
+        recenterTrigger, 
+        setRecenterTrigger,
         numerator,
         percentage,
         foodItems,
