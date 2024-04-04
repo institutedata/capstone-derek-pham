@@ -27,6 +27,12 @@ function ProgressBar() {
   const maxWidth = dimensions.width / 6 * 5;
 
   useEffect(() => {
+    const newWidth = Math.min(foodItems.length, 50); // Ensure the width does not exceed 50
+    setRectWidth(newWidth);
+  }, [foodItems]);
+
+
+  useEffect(() => {
     const checkCollision = (rectWidth) => {
       const scaledWidth = rectWidth / 50 * maxWidth;
       const rectRightEdge = rectX + scaledWidth;
@@ -72,8 +78,8 @@ function ProgressBar() {
 
   return (
     <div ref={containerRef} className='progressBar'>
-      {//<input id='myRange' type="range" min="0" max='50' value={rectWidth} onChange={e => setRectWidth(Number(e.target.value))} />
-      }
+      {/* <input id='myRange' type="range" min="0" max='50' value={rectWidth} onChange={e => setRectWidth(Number(e.target.value))} />
+       */}
       <Stage width={dimensions.width} height={100} id='progressBarStage'>
         <Layer id='progressBarLayer'>
           <Rect
@@ -86,7 +92,7 @@ function ProgressBar() {
           <Rect
             x={rectX}
             y={rectY}
-            width={rectWidth / 50 * maxWidth}
+            width={Math.min(rectWidth / 50 * maxWidth, maxWidth)}
             height={rectHeight}
             fill="#FFBF00"
           />
