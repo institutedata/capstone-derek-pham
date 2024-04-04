@@ -108,7 +108,7 @@ function ProgressBar() {
             />
           ))}
           <Text
-            x={lastCircle.x + lastCircle.radius + 60} // Adjust the position as needed
+            x={dimensions.width - 115} // Adjust the position as needed
             y={lastCircle.y - 10} // Center vertically with the circle
             text={`${foodItems.length}/50`}
             fontSize={20}

@@ -101,7 +101,11 @@ export default function StarryBackground() {
 
 
     if (init) {
-        return <Particles id="tsparticles" className="starry-background" particlesLoaded={particlesLoaded} options={options} />;
+        return (
+            <div className="starry-background">
+                <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
+            </div>
+        );
     }
 
     return <></>;

@@ -284,11 +284,11 @@ header nav a:hover {
 }
 
 #foodListGridView li:hover {
-    background-color: hsla(185, 55%, 55%, 0.5);
+    background-color: #daa520 ;
 }
 
 #foodList li:hover {
-    background-color: hsla(157, 45%, 55%, 0.5);
+    background-color: #daa520;
 }
 
 #foodList li div {
