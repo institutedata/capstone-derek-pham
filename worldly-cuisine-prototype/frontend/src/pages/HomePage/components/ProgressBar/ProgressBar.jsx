@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { FoodDataContext } from '../FoodDataContext';
-import { Stage, Layer, Rect, Circle } from 'react-konva';
+import { Stage, Layer, Rect, Circle, Text } from 'react-konva';
 import Konva from 'konva';
 import './ProgressBar.css';
 
@@ -23,6 +23,8 @@ function ProgressBar() {
     { x: (dimensions.width / 6 * 4), y: 50, radius: 18 },
     { x: (dimensions.width / 6 * 5), y: 50, radius: 18 }
   ];
+
+  const lastCircle = circles[circles.length - 1];
 
   const maxWidth = dimensions.width / 6 * 5;
 
@@ -105,6 +107,14 @@ function ProgressBar() {
               isColliding={collisions[index]}
             />
           ))}
+          <Text
+            x={lastCircle.x + lastCircle.radius + 60} // Adjust the position as needed
+            y={lastCircle.y - 10} // Center vertically with the circle
+            text={`${foodItems.length}/50`}
+            fontSize={20}
+            fontFamily="Arial"
+            fill="white"
+          />
         </Layer>
       </Stage>
     </div>

@@ -73,6 +73,8 @@
 /-- 03/04/2024
     - reached 200+ data entries
     - added alert if item is already in list
+    - added max length to progressBar
+    - added score tracker to progressBar
 --/
 
 NEXT:

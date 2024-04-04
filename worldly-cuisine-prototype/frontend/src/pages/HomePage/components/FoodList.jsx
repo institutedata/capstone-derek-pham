@@ -14,7 +14,6 @@ const FoodList = () => {
     return (
         <div className="FoodExperienceContainer">
             <h1>List</h1>
-            <p>Count: {foodItems.length}</p>
             <button id='listViewButton' onClick={() => { setGridView(!gridView) }}><img src={gridView ? listViewImg : gridViewImg} alt="Grid View" style={{ width: "18px", filter: 'invert(100%)' }} /></button>
             <div id="foodListContainer">
                 {gridView ?
