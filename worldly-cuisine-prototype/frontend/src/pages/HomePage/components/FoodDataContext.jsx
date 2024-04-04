@@ -43,16 +43,24 @@ export const DataProvider = ({ children }) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(item),
         });
-        console.log(response)
-        // POST request to backend...
-        // Fetch updated list...
-        if (response.ok) {
-            await updateFoodItems()
+        const result = await response.json()
+        console.log(result)
+        if (result.added) {
+            await updateFoodItems(); // If the item was added, update the food items list
         } else {
-            console.log('ERRO')
-            return null
+            alert(result.message); // If not added (e.g., item already exists), show an alert with the message
         }
     }, []);
+
+    const deleteFoodItem = async (foodName) => {
+        try {
+            await fetch(`http://localhost:5000/api/removeFoodItem/${foodName}`, { method: 'DELETE' });
+            // Update the state to reflect the deletion in the UI
+            setFoodItems(foodItems.filter(item => item['name'] !== foodName));
+        } catch (error) {
+            console.error('Error deleting food item:', error);
+        }
+    };
 
     const value = {
         lng,
@@ -66,6 +74,7 @@ export const DataProvider = ({ children }) => {
         foodItems,
         setFoodItems,
         addFoodItem,
+        deleteFoodItem,
         updateFoodExperience
     };
 

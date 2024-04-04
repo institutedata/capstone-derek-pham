@@ -63,7 +63,7 @@ export default function FoodForm() {
           <p className='loader' style={{ gridColumn: 'span 2', display: displayLoading ? 'block' : 'none', fontSize: '24px' }}></p>
           <p id="result" style={{ display: displayStatus }}><span id="flagIcon" className={`fi fi-${isoCode}`}></span>{countryResult}</p>
           <img id="foodThumbnail" src={foodThumbnailURL} style={{ display: displayStatus }} alt="Image" />
-          <p id="foodDescription" style={{ display: displayStatus }}>{foodDescription}</p><a id="articleURL" href={articleURL} target="_blank">Read more</a>
+          <p id="foodDescription" style={{ display: displayStatus }}>{foodDescription}</p><a id="articleURL" href={articleURL} target="_blank" style={{ display: displayStatus }}>Read more</a>
         </div>
         <button id="addFoodButton" onClick={(e) => { addFoodItem(foodDataObject, e) }} style={{ display: displayStatus }}>Add to list</button>
       </div>

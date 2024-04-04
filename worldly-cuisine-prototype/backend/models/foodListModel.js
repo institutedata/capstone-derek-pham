@@ -60,13 +60,18 @@ class FoodListModel {
       
       const isDuplicate = items.some(item => item.name === newItem.name);
       const isRecordDuplicate = records.some(item => item.name === newItem.name);
+
+      let result = { added: false, message: '' };
       
       if (!isDuplicate) {
         console.log('Adding new item:', newItem.name);
-        await db.collection('foodData').insertOne(newItem)
-      } else {
-          console.log('Item already exists:', newItem.name);
-      }
+        await db.collection('foodData').insertOne(newItem);
+        result.added = true;
+        result.message = 'New item added successfully.';
+    } else {
+        console.log('Item already exists:', newItem.name);
+        result.message = 'Item already exists.';
+    }
 
       if (!isRecordDuplicate) {
         console.log('Adding new item to record:', newItem.name);
@@ -75,6 +80,8 @@ class FoodListModel {
           console.log('Item already exists in record:', newItem.name);
       }
       // console.log(this.foodItems)
+
+      return result
     }
   
     async removeFoodItem(itemName) {

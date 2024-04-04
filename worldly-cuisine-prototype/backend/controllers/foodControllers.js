@@ -122,6 +122,16 @@ function handleSpecialCase(place) {
     case "Korea":
       return "South Korea";
       break;
+    case "England":
+      return "United Kingdom";
+      break;
+    case "Scotland":
+      return "United Kingdom";
+      break;
+    case "Laos":
+      return "Lao People's Democratic Republic";
+      break;
+
     default:
       return place;
   }

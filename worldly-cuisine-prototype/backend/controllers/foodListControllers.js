@@ -7,8 +7,8 @@ const getFoodItems = async (req, res) => {
 
 const addFoodItem = async (req, res) => {
   const data = req.body;
-  await foodListModel.addFoodItem(data);
-  res.send('Item added');
+  const result = await foodListModel.addFoodItem(data);
+  res.json(result);
 };
 
 const removeFoodItem = (req, res) => {
