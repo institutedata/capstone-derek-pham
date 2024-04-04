@@ -18,15 +18,46 @@ const MapBox = () => {
     return Array.from(response);
   }
 
-  async function setPaint(map, color) {
+  async function setPaint(map, fillColor, borderColor) {
     let highlightCountries = await obtainISOs();
+
+    // Set fill color for highlighted countries
     map.setPaintProperty("countriesLayer", "fill-color", [
       "match",
       ["get", "ISO_A2"],
       highlightCountries,
-      color,
-      "#888888",
+      fillColor, // Use the fillColor parameter for highlighted countries
+      "#888888"  // Default fill color for non-highlighted countries
     ]);
+
+    // Check if the border layer exists, if not, create it
+    if (!map.getLayer("countriesBorders")) {
+      map.addLayer({
+        id: "countriesBorders",
+        type: "line",
+        source: "countries",
+        layout: {},
+        paint: {
+          "line-color": [
+            "match",
+            ["get", "ISO_A2"],
+            highlightCountries,
+            borderColor, // Use the borderColor parameter for highlighted countries
+            "rgba(0, 0, 0, 0)" // Transparent for non-highlighted countries
+          ],
+          "line-width": 0.3,
+        },
+      });
+    } else {
+      // Update line color for existing border layer
+      map.setPaintProperty("countriesBorders", "line-color", [
+        "match",
+        ["get", "ISO_A2"],
+        highlightCountries,
+        borderColor, // Use the borderColor parameter for highlighted countries
+        "rgba(0, 0, 0, 0)" // Transparent for non-highlighted countries
+      ]);
+    }
   }
 
   useEffect(() => {
@@ -35,7 +66,7 @@ const MapBox = () => {
       style: 'mapbox://styles/derekpham/clsift3s4006l01rb2jku7ypf',
       center: [lng, lat],
       zoom: 1,
-      attributionControl: false 
+      attributionControl: false
     });
 
     map.on('load', async () => {
@@ -56,9 +87,10 @@ const MapBox = () => {
           "fill-opacity": 0.7,
         },
       });
-      
+
       setIsMapLoaded(true);
     });
+
 
     return () => map.remove();
   }, []);
@@ -76,7 +108,7 @@ const MapBox = () => {
   useEffect(() => {
     if (isMapLoaded && mapRef.current) {
       console.log('Map coloring in effect');
-      setPaint(mapRef.current, "#00FF00");
+      setPaint(mapRef.current, "#ffdf00", '#708238');
     }
   }, [foodItems, isMapLoaded]);
 

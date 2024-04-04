@@ -75,6 +75,7 @@
     - added alert if item is already in list
     - added max length to progressBar
     - added score tracker to progressBar
+    - added border to MapBox.jsx
 --/
 
 NEXT:
