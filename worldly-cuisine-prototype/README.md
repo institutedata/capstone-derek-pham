@@ -51,8 +51,8 @@ flowchart TD
 ```
 ### Forking Repository
 1. Clone repository
-2. Run 'npm install' for dependencies
-3. Run 'npm start'
+2. Run 'npm install' in root directory, backend and frontend
+3. Run 'npm start' from root directory
 
 ### Known issues
 
