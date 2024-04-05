@@ -70,7 +70,7 @@
     - added multiple phrase matches for multiple extracted segments
 --/
 
-/-- 03/04/2024
+/-- 04/04/2024
     - reached 200+ data entries
     - added alert if item is already in list
     - added max length to progressBar
@@ -79,7 +79,6 @@
 --/
 
 NEXT:
-- TODO: add score tracker
 - TODO: figure out what to write for documentation
     ~ TODO: build infrastructure for speed quiz
 - TODO: implement user-specific data
@@ -108,7 +107,7 @@ NEXT:
 
 [
     REGEX TESTING CASES (FIXED):
-    - need to accomodate special characters e.gg Bánh mì
+    - need to accomodate special characters e.g Bánh mì
         - mostly fixed with redirecting
     - https://en.wikipedia.org/wiki/Bulgogi returns korea instead of NORTH korea
         - added switch case block to backend algorithm
