@@ -74,6 +74,12 @@ gantt
 
 ![Landing Page](landing-page.png)
 
+The top red component contains the title and the links to two pages. Currently, the "Quiz" page is incomplete.
+
+The orange form is the main component that the user will interact with in terms of input. A food name can be inputted into the form and when submitted the relevant will be displayed under the form and the map component to the right of it will update and display its location.
+
+An "Add to list" button will then display, providing users the option to add food names to the green list component and this acts as storage for the users data. The yellow progress bar component, purple stat component, bar-chart component and map component will all update and change to reflect the current state of the data that is stored inside the list component.
+
 ## Usage
 ### User flow
 ```mermaid
