@@ -1,0 +1,10 @@
+
+.progressBar {
+    grid-column: span 2;
+    /* background-color: #307fc9; */
+}
+
+#myRange {
+    width: 500px;
+}
+

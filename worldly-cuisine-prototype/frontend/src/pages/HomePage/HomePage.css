@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=DM+Sans:opsz@9..40&family=Exo:wght@100;200;300;400;500;600&family=Oswald&family=Raleway:wght@300&display=swap');
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: dm sans;
+    font-size: 18px;
+    background-color: hsla(0, 70%, 53%, 0.95);
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "title title"
+        "home explore";
+}
+
+.title {
+    grid-area: title;
+}
+
+.explore {
+    grid-area: explore
+}
+
+.home {
+    grid-area: home
+}
+
+header nav a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-family: dm sans;
+    margin: 1px 100px;
+}
+
+header nav a:hover {
+    background-color: #f1c40f;
+    border-radius: 5px;
+    animation-name: bounce;
+    animation-duration: .2s;
+    animation-timing-function: ease-in-out;
+}
+
+.map-container {
+    height: 400px;
+    width: 100%;
+}
+
+.data-provider {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.foodFormContainer {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    background-color: hsla(20, 72%, 58%, 0.95)
+}
+
+.loader {
+    border: 5px solid #787878;
+    border-top: 5px solid #f1c40f;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    animation: spin 0.6s linear infinite;
+    position: relative;
+    top: -80px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#foodForm {
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#mainButton {
+    text-align: center;
+    padding: 6px 10px;
+    margin-left: 0.5em;
+    color: white;
+    font-family: dm sans;
+    font-size: 18px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    border: none;
+}
+
+#altButton {
+    justify-self: center;
+    padding: 6px 10px;
+    margin-left: 2px;
+    text-align: center;
+    color: white;
+    font-family: dm sans;
+    font-size: 18px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    border: none;
+}
+
+#foodForm button:hover {
+    background-color: #c0392b;
+}
+
+#foodForm button:active {
+    background-color: #f1c40f;
+
+}
+
+#foodForm input {
+    height: 30px;
+    font-size: 20px;
+}
+
+#altButton {
+    display: none;
+}
+
+.resultContainer {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+#result {
+    align-self: flex-start;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    font-family: dm sans;
+}
+
+#flagIcon {
+    margin-right: .4em;
+    border-radius: 2px;
+}
+
+#foodThumbnail {
+    display: none;
+}
+
+#foodDescription {
+    text-align: center;
+    grid-column: span 2;
+    font-size: 16px;
+    color: white;
+    font-family: dm sans;
+}
+
+#articleURL {
+    grid-column: span 2;
+    font-size: 16px;
+    color: white;
+    font-family: dm sans;
+    text-decoration-line: underline;
+}
+
+#articleURL:hover {
+    color: red;
+}
+
+.FoodExperienceContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: start;
+    grid-column: span 2;
+    height: 320px;
+    background-color: hsla(103, 40%, 50%, 0.95);
+    font-size: 16px;
+    color: white;
+    font-family: dm sans;
+}
+
+.FoodExperienceContainer h1 {
+    margin-top: 0.1cm;
+    margin-left: 0.2cm;
+    margin-bottom: 0.1cm;
+}
+
+#addFood {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+#addFoodButton {
+    align-self: center;
+    padding: 6px 10px;
+    color: white;
+    font-family: dm sans;
+    font-size: 18px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    border: none;
+}
+
+#addFoodButton:hover {
+    background-color: #c0392b;
+}
+
+#addFoodButton:active {
+    background-color: #f1c40f;
+}
+
+#foodListContainer {
+    height: 240px;
+    overflow-y: auto;
+    background-color: hsla(103, 40%, 50%, 0.95);
+    grid-column: span 2;
+}
+
+#listViewButton {
+    justify-self: end;
+    margin-right: 40px;
+}
+
+#foodListGridView {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+}
+
+#foodList {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+#foodListGridView {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+#foodListGridView li {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 150px;
+}
+
+#foodList li {
+    display: grid;
+    align-items: center;
+    height: 50px;
+}
+
+#foodListGridView li:hover {
+    background-color: #daa520 ;
+}
+
+#foodList li:hover {
+    background-color: #daa520;
+}
+
+#foodList li div {
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr;
+}
+
+#foodList button {
+    margin-right: 50px;
+    justify-self: end;
+    align-self: center;
+    color: white;
+    font-family: dm sans;
+    font-size: 14px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    height: 30px;
+    padding: 6px 10px;
+    border: none;
+}
+
+#foodListGridView button {
+    justify-self: center;
+    align-self: center;
+    color: white;
+    font-family: dm sans;
+    font-size: 14px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    height: 30px;
+    padding: 6px 10px;
+    border: none;
+}
+
+.FoodExperienceContainer button {
+    justify-self: center;
+    align-self: center;
+    color: white;
+    font-family: dm sans;
+    font-size: 14px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    height: 30px;
+    padding: 6px 10px;
+    border: none;
+}
+
+#foodList button:hover {
+    background-color: #c0392b;
+}
+
+#foodList button:active {
+    background-color: #f1c40f;
+}
+
+#foodListGridView button:hover {
+    background-color: #c0392b;
+}
+
+#foodListGridView button:active {
+    background-color: #f1c40f;
+}
+
+#foodExperiencePercentage {
+    /* margin-top: 2cm; */
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    height: 50px;
+    color: white;
+    font-family: dm sans;
+    font-size: 18px;
+    background-color: #9b59b6;
+    padding-bottom: 2px;
+
+}
+
+#foodExperienceStat {
+    margin-left: .2cm;
+    margin-right: .2cm;
+    grid-column: span 2;
+}
+
+#myBarChart {
+    grid-column: span 2;
+    width: calc(100% - 40px);
+    height: 800px;
+    background-color: hsla(0, 0%, 97%, 0.95);
+    border: 1px solid #ddd;
+    padding: 20px;
+}

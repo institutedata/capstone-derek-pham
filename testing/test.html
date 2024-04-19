@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hitbox Logic Example</title>
+    <style>
+        #box1, #box2 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        #box1 { background-color: red; }
+        #box2 { background-color: blue; }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <script>
+        const box1 = document.getElementById('box1');
+        const box2 = document.getElementById('box2');
+
+        let box1X = 0, box1Y = 0;
+        let box2X = 100, box2Y = 100;
+
+        function moveBoxes() {
+            // Simple movement logic (you can replace this with your own logic)
+            box1X += 1;
+            box1Y += 1;
+            box2X -= 1;
+            box2Y -= 1;
+
+            // Update the positions
+            box1.style.left = box1X + 'px';
+            box1.style.top = box1Y + 'px';
+            box2.style.left = box2X + 'px';
+            box2.style.top = box2Y + 'px';
+
+            // Collision detection and color change
+            if (box1X < box2X + 50 && box1X + 50 > box2X &&
+                box1Y < box2Y + 50 && box1Y + 50 > box2Y) {
+                box1.style.backgroundColor = 'green';
+                box2.style.backgroundColor = 'green';
+            } else {
+                box1.style.backgroundColor = 'red';
+                box2.style.backgroundColor = 'blue';
+            }
+
+            requestAnimationFrame(moveBoxes);
+        }
+
+        moveBoxes(); // Start moving the boxes
+    </script>
+</body>
+</html>

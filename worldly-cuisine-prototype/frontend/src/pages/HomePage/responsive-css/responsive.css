@@ -1,0 +1,22 @@
+@media (max-width: 600px) {
+    #foodForm {
+        display: grid;
+        grid-template-columns: 160px 50px;
+        align-items: center;
+    }
+
+    #foodInput {
+        width: 150px;
+        justify-self: end;
+    }
+
+    #mainButton {
+        display: none;
+    }
+
+    #altButton {
+        display: block;
+        justify-self: start;
+    }
+
+}
