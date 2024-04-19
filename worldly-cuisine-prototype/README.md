@@ -81,6 +81,10 @@ The orange form is the main component that the user will interact with in terms 
 An "Add to list" button will then display, providing users the option to add food names to the green list component and this acts as storage for the users data. The yellow progress bar component, purple stat component, bar-chart component and map component will all update and change to reflect the current state of the data that is stored inside the list component.
 
 ## Usage
+As briefly mentioned previously, users submit a food name and is met with returned information. The form component on submission sends the input to the backend which will perform a check on the project's secondary database. If that database has the information it will send it back to the frontend and if not it will call on external APIs for information and construct a new data object which is sent back to the frontend and a copy is stored in the secondary database for future reference.
+
+After receiving information from the backend, the frontend will display the information. This includes the location of origin of the food, the flag of said location, a small description, a link to its wikipedia article and its location on the map component adjacent to the form component. The user now has the option to add the food name to the list component. If the list component is updated with the addition or removal of a food name, five other components that rely on this food list data will also update accordingly.
+
 ### User flow
 ```mermaid
 flowchart TD
