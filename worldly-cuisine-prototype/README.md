@@ -106,8 +106,9 @@ flowchart TD
 ```
 ### Forking Repository
 1. Clone repository
-2. Run 'npm install' in root directory, backend and frontend
-3. Run 'npm start' from root directory
+2. Run 'npm install' in root directory. This should install 'npm concurrently' in order to run the backend and frontend at the same time
+3. Run 'npm install' in the backend and frontend directories. This should install relevant libraries as listed below in the [Technology & Structure](#technology--structure) section
+4. Run 'npm start' from root directory
 
 ### Known issues
 
