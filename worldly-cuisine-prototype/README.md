@@ -21,6 +21,9 @@
 
 Sparked from a small curiosity and a simple idea, this mini-project, "BiteMap," is a interactive platform that allows food enthusiasts and cultural explorers to dive into the rich diversity of global cuisines. With BiteMap, you can track and discover dishes from all over the world.
 
+### Overview and Goals
+The goal behind the project is to essentially allow users to test their food knowledge by naming as many different foods as they can. The webapp can then provide the location of origin for every food name as well as track them and display various visuals that represent the users data. The intended incentive is to allow users to understand the extent of their culinary, geographic and cultural knowledge as well as promoting self-awareness and providing motivation to explore and learn about new uncharted knowledge.
+
 ## Timeframe
 ```mermaid
 gantt
