@@ -2,6 +2,8 @@
 
 ## Table of Contents
 - [BiteMap](#bitemap)
+- [Background](#background)
+- [Timeframe](#timeframe)
 - [Site](#site)
   - [Landing Page](#landing-page)
 - [Usage](#usage)
@@ -18,6 +20,50 @@
 ## Background
 
 Sparked from a small curiosity and a simple idea, this mini-project, "BiteMap," is a interactive platform that allows food enthusiasts and cultural explorers to dive into the rich diversity of global cuisines. With BiteMap, you can track and discover dishes from all over the world.
+
+## Timeframe
+```mermaid
+gantt
+    title A Gantt Diagram for WebApp Development
+    dateFormat YYYY-MM-DD    
+    section Project Definition
+        Define project scope and goals            :des1, 2024-01-28, 1d
+        Research and Concept Building             : des2, after des1, 1d
+        
+    section Initial Development       
+        (Backend) Research Wikipedia API and data sources                   :a2, 2024-01-29, 2d
+        Backend MVP Prototyping                   :2024-01-30, 1d
+        (Frontend) Research GoogleMaps API                  :a3, after a2, 2d
+        Frontend MVP Prototyping                  :a4, 2024-02-01, 1d
+        
+    section Refinement Phase
+        Backend Rework with Express.js, Data handling & persistance            :a4, after a3, 8d
+        Additional Frontend Development with Graphs and Flags          :a4, 2024-02-04, 6d
+        Initial Product Presentation              :crit, 2024-02-10, 1d
+
+    section Backend Redevelopment
+        Research and Database planning (MongoDB): b1, 2024-02-11, 1d
+        Rewriting Backend to fit MVC structure : b2, after b1, 15d
+        Implementing database and testing: b3, 2024-02-26, 5d
+        Substituting GoogleMaps for MapBox: b4, 2024-03-01, 2d
+        Further development of map data interactions and testing: b5, 2024-03-03, 4d
+        Product Presentation #2: crit, b5, 2024-03-07, 1d
+
+    section Frontend Redevelopment
+        Research for libraries and feature planning: c1, 2024-03-08, 3d
+        Rewriting Frontend to fit React Conventional structure: c2, 2024-03-10, 16d
+        Implementing new libraries and testing: c3, 2024-03-16, 7d
+        Updating visuals and Reponsitivity: c3, 2024-03-22, 4d
+        Product Presentation #3: crit, c5, 2024-03-26, 1d
+
+    section Second Refinement Phase and Deployment
+        Bug-fixing code (Frontend & Backend): d1, 2024-03-27, 7d
+        Database testing and building: d2, 2024-04-01, 3d
+        QoL changes/features and small UI updates: d2, 2024-04-03, 3d
+        Documentation: d2, 2024-04-05, 1d
+        Final Product Presentation: crit, c5, 2024-04-06, 1d
+
+```
 
 ## Site
 
