@@ -209,6 +209,10 @@ foodData ||--o{ foodDataRecord : "saves a copy into"
 As BiteMap continues to evolve, we have several enhancements and new features planned to enrich the platform and provide a more comprehensive experience. These include:
 
  - Implementing a taste profile in the form of a radar chart (sweet, sour, salty, bitter, umami)
+    - This could be possibly done with AI as there is no database that contains definitive data that can effectively describe taste profiles of food i.e lemons are sour, pad thai is sweet & salty
  - Incorporating multi-region data
+    - This would require a small overall rework of the webapp as this would impact visuals and UI the most
  - A new quiz mode
+    - This would be the opposite experience of the current home page. Users can be provided some information such as spelling or location clues and would have to guess what the food name is
  - Implementing user profiles so people can save their data
+    - This could potentially allow users to learn about their peers and possibly promote motivation to learn more
