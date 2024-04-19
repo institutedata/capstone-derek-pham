@@ -216,3 +216,8 @@ As BiteMap continues to evolve, we have several enhancements and new features pl
     - This would be the opposite experience of the current home page. Users can be provided some information such as spelling or location clues and would have to guess what the food name is
  - Implementing user profiles so people can save their data
     - This could potentially allow users to learn about their peers and possibly promote motivation to learn more
+
+## Acknowledgements
+This project could not have been done without the guidance and support of my instructors from the Institute of Data: [Isaac](https://github.com/superstructor), [Keren](https://github.com/kezzaam) and [Bally](https://github.com/ballyalley-o). I have nothing but respect and gratitude for them as they dedicated their time to help oversee our learning on top of their busy schedules and my appreciativeness also extends towards my classmates who were also involved in the course. Everyone has been supportive since the beginning and I truly hope to see all of us succeed in our pursuits. 
+
+Thank you once again! <3
