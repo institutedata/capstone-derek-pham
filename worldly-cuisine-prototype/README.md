@@ -165,17 +165,17 @@ flowchart TD
 ### Frontend
 
 - [React](https://react.dev/) - React serves as the core library in building user interface 
-- [react-konva](https://konvajs.org/docs/react/Intro.html) - Used to build the progress bar component
+- [react-konva](https://konvajs.org/docs/react/Intro.html) - Used to build the progress bar component due to its flexibility in rendering shapes on top of each other and use mathematics to simulate collision logic
 - [tsParticles](https://particles.js.org/) - Used to create the animated background
 - [flag-icons](https://www.npmjs.com/package/flag-icons) - CSS library used to render flags using ISO 3166-1-alpha-2 codes
-- [MapBox](https://www.mapbox.com/) - Used to create MapBox component as well as retrieve geolocation data
+- [MapBox](https://www.mapbox.com/) - Used to create MapBox component as well as retrieve geolocation data. Replaced GoogleMaps in the early stages of the project due to its flexibility in customizing map styles and providing a higher level of map interactivity
 - [Chart.js](https://www.chartjs.org/) - Used to visualize data
 
 ### Backend
 
 - [countries.geojson](https://github.com/datasets/geo-countries) - Pulled from public github repo and rendered with MapBox
 - [mongodb](https://gist.github.com/kalinchernev/486393efcca01623b18d) - Pulled from github and used as reference point for country matching in algorithm
-- [Wikimedia API](https://api.wikimedia.org/wiki/Main_Page) - Main body of algorithm used to create food data objects
+- [Wikimedia API](https://api.wikimedia.org/wiki/Main_Page) - Main body of algorithm used to create food data objects. Is the only source of information that could provide consistent relevant geographical data of food compared to other data sources
 - [MapBox Api](https://docs.mapbox.com/api/overview/) - Usage in backend involves obtaining coordinate data from country names
 
 #### Database Structure
